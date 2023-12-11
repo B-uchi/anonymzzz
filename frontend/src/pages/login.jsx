@@ -40,7 +40,7 @@ const Login = () => {
       })
       .catch((e) => {
         document.querySelector("#login").classList.remove("show-loading");
-        e.response.data.message ? toast.error("e.response.data.message") : toast.error("An error occured...");       
+        e.response.data.message ? toast.error(e.response.data.message) : toast.error("An error occured...");       
         console.log(e.response.data.message);
       });
   };
@@ -68,7 +68,7 @@ const Login = () => {
       })
       .catch((e) => {
         document.querySelector("#register").classList.remove("show-loading");
-        e.response.data.message ? toast.error("e.response.data.message") : toast.error("An error occured...");
+        e.response.data.message ? toast.error(e.response.data.message) : toast.error("An error occured...");
         console.log(e.response.data.message);
       });
   };
