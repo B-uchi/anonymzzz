@@ -14,6 +14,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const login = async (e) => {
+    document.querySelector("#login").classList.add("show-loading");
     e.preventDefault();
     const loginRequest = {
       url: "https://anonymzzz-server.vercel.app/auth/login",
@@ -31,17 +32,21 @@ const Login = () => {
         sessionStorage.setItem("mail", response.data.user.email);
         sessionStorage.setItem("token", response.data.token);
         toast.success("Login successfull...");
+
         setTimeout(() => {
           navigate("/dashboard");
         }, 1000);
+        document.querySelector("#login").classList.remove("show-loading");
       })
       .catch((e) => {
-        toast.error(e.response.data.message);
+        document.querySelector("#login").classList.remove("show-loading");
+        e.response.data.message ? toast.error("e.response.data.message") : toast.error("An error occured...");       
         console.log(e.response.data.message);
       });
   };
 
   const register = async (e) => {
+    document.querySelector("#register").classList.add("show-loading");
     e.preventDefault();
     const registerRequest = {
       url: "https://anonymzzz-server.vercel.app/auth/register",
@@ -58,10 +63,12 @@ const Login = () => {
         toast.success("Account created successfully...");
         setTimeout(() => {
           navigate("/dashboard");
-        }, 500);
+        }, 1000);
+        document.querySelector("#register").classList.remove("show-loading");
       })
       .catch((e) => {
-        toast.error(e.response.data.message);
+        document.querySelector("#register").classList.remove("show-loading");
+        e.response.data.message ? toast.error("e.response.data.message") : toast.error("An error occured...");
         console.log(e.response.data.message);
       });
   };
@@ -112,9 +119,9 @@ const Login = () => {
                     <div className="mt-5 flex justify-center">
                       <button
                         onClick={(e) => login(e)}
-                        className="p-3 px-5 hover:scale-105 btn rounded-lg bg-[#e5e7eb38]"
+                        className="p-3 px-5 flex gap-3 items-center hover:scale-105 btn rounded-lg bg-[#e5e7eb38]"
                       >
-                        Log In
+                        Log In <div id="login" className="traffic-loader"></div>
                       </button>
                     </div>
                     <div className="flex justify-center">
@@ -174,9 +181,10 @@ const Login = () => {
                     <div className="mt-5 flex justify-center">
                       <button
                         onClick={(e) => register(e)}
-                        className="p-3 px-5 hover:scale-105 btn rounded-lg bg-[#e5e7eb38]"
+                        className="p-3 px-5 flex gap-3 items-center hover:scale-105 btn rounded-lg bg-[#e5e7eb38]"
                       >
-                        Register
+                        Register{" "}
+                        <div id="register" className="traffic-loader"></div>
                       </button>
                     </div>
                     <div className="flex justify-center ">
