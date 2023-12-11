@@ -9,7 +9,7 @@ const SendMessage = () => {
 
   useEffect(() => {
     document.title = `Send a message to ${username} | Anonymzzz`;
-    const newMetaTag = document.createElement("meta[property='og:title
+    const newMetaTag = document.createElement("meta[property='og:title']");
     newMetaTag.content = "Anonymzzz";
     const anotherMetaTag = document.createElement("meta[property='og:description']");
     anotherMetaTag.content = `Send a message to ${username}`;
