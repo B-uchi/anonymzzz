@@ -16,7 +16,7 @@ const Login = () => {
   const login = async (e) => {
     e.preventDefault();
     const loginRequest = {
-      url: "http://localhost:5555/auth/login",
+      url: "https://anonymzzz-server.vercel.app/auth/login",
       method: "POST",
       data: JSON.stringify({ email, password }),
       headers: {
@@ -44,7 +44,7 @@ const Login = () => {
   const register = async (e) => {
     e.preventDefault();
     const registerRequest = {
-      url: "http://localhost:5555/auth/register",
+      url: "https://anonymzzz-server.vercel.app/auth/register",
       method: "POST",
       data: JSON.stringify({ email, password, username }),
       withCredentials: true,
