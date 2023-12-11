@@ -9,12 +9,11 @@ const SendMessage = () => {
 
   useEffect(() => {
     document.title = `Send a message to ${username} | Anonymzzz`;
-    const newMetaTag = document.createElement("meta");
-    newMetaTag.property = "og:title";
+    const newMetaTag = document.createElement("meta[property='og:title
     newMetaTag.content = "Anonymzzz";
-    const anotherMetaTag = document.createElement("meta");
-    anotherMetaTag.property = "og:description";
+    const anotherMetaTag = document.createElement("meta[property='og:description']");
     anotherMetaTag.content = `Send a message to ${username}`;
+    document.head.appendChild(newMetaTag);
     document.head.appendChild(anotherMetaTag);
     const verifyLink = () => {
       const request = {
