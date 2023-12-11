@@ -47,7 +47,6 @@ const Login = () => {
       url: "https://anonymzzz-server.vercel.app/auth/register",
       method: "POST",
       data: JSON.stringify({ email, password, username }),
-      withCredentials: true,
       headers: {
         "content-type": "application/json",
       },
