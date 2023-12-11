@@ -9,12 +9,19 @@ const SendMessage = () => {
 
   useEffect(() => {
     document.title = `Send a message to ${username} | Anonymzzz`;
-    const newMetaTag = document.createElement("meta[property='og:title']");
-    newMetaTag.content = "Anonymzzz";
-    const anotherMetaTag = document.createElement("meta[property='og:description']");
-    anotherMetaTag.content = `Send a message to ${username}`;
-    document.head.appendChild(newMetaTag);
-    document.head.appendChild(anotherMetaTag);
+    function setMetaTag(property, content) {
+        const existingTag = document.querySelector(`meta[property="${property}"]`);
+        if (existingTag) {
+          existingTag.setAttribute("content", content);
+        } else {
+          const newMetaTag = document.createElement("meta");
+          newMetaTag.setAttribute("property", property);
+          newMetaTag.setAttribute("content", content);
+          document.head.appendChild(newMetaTag);
+        }
+      }
+    setMetaTag("og:title", "Anonymzzz");
+    setMetaTag("og:description", `Send a message to ${username}`);
     const verifyLink = () => {
       const request = {
         url: "https://anonymzzz-server.vercel.app/user/verifyLink",
