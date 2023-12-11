@@ -10,7 +10,7 @@ const SendMessage = () => {
   useEffect(() => {
     const verifyLink = () => {
       const request = {
-        url: "http://localhost:5555/user/verifyLink",
+        url: "https://anonymzzz-server.vercel.app/user/verifyLink",
         method: "POST",
         data: { username },
         headers: {
@@ -32,7 +32,7 @@ const SendMessage = () => {
   const sendMessage = () => {
     if (message != null) {
       const request = {
-        url: "http://localhost:5555/user/sendMessage",
+        url: "https://anonymzzz-server.vercel.app/user/sendMessage",
         method: "POST",
         data: { username, message },
         headers: {
