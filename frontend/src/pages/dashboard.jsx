@@ -14,7 +14,7 @@ const Dashboard = () => {
   useEffect(() => {
     const verifyUser = () => {
       const verifyUserRequest = {
-        url: "http://localhost:5555/user/verify",
+        url: "https://anonymzzz-server.vercel.app/user/verify",
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -40,7 +40,7 @@ const Dashboard = () => {
 
     const getLink = () => {
       const getLinkRequest = {
-        url: "http://localhost:5555/user/getLink",
+        url: "https://anonymzzz-server.vercel.app/user/getLink",
         method: "POST",
         data: { username },
         headers: {
@@ -62,7 +62,7 @@ const Dashboard = () => {
 
     const getMessages = () => {
       const getMessageRequest = {
-        url: "http://localhost:5555/user/messages",
+        url: "https://anonymzzz-server.vercel.app/user/messages",
         method: "POST",
         data: { username },
         headers: {
