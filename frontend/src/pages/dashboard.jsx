@@ -104,8 +104,8 @@ const Dashboard = () => {
         </div>
       ) : (
         <div className="flex justify-center w-full items-center">
-          <div className="flex flex-col items-center w-[100%] h-[100vh]">
-            <div className="h-[40%] w-[100%] md:w-[500px] md:h-[50%]">
+          <div className="flex flex-col gap-14 items-center w-[100%] h-[100vh]">
+            <div className="h-[30%] w-[100%] md:w-[500px] md:h-[50%]">
               <div className="bg-[#0d0c22] mt-5 rounded-lg p-3 text-white shadow-black shadow-md">
                 <div className="border  p-2 rounded-md">
                   <h2 className="text-center text-2xl">Anonymzzz</h2>
@@ -138,8 +138,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-
-            <div className="mt-5 flex w-[100%] md:w-[500px] h-[60%] md:h-[50%] flex-col text-center p-3">
+            <div className="flex w-[100%] md:w-[500px] h-[65%] md:h-[50%] flex-col text-center p-3">
               <p className="mt-5 text-left mb-2">Your messages:</p>
               <div className="msg-container w-[100%] overflow-y-scroll">
                 {messages
