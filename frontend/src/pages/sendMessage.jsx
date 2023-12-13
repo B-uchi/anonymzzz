@@ -8,6 +8,14 @@ const SendMessage = () => {
   let { username } = useParams();
 
   useEffect(() => {
+    document.title = `Send a message to ${username} | Anonymzzz`;
+    const newMetaTag = document.createElement("meta");
+    newMetaTag.property = "og:title";
+    newMetaTag.content = "Anonymzzz";
+    const anotherMetaTag = document.createElement("meta");
+    anotherMetaTag.property = "og:description";
+    anotherMetaTag.content = `Send a message to ${username}`;
+    document.head.appendChild(anotherMetaTag);
     const verifyLink = () => {
       const request = {
         url: "http://localhost:5555/user/verifyLink",

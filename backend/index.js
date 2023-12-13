@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import userRoutes from "./routes/user.js";
 import authRoutes from "./routes/auth.js";
-import { verifyToken } from "./middleware/auth.js";
 
 dotenv.config();
 const app = express();
