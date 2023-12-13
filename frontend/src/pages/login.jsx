@@ -85,7 +85,7 @@ const Login = () => {
         <h2 className="m-0 text-2xl">Anonymzzz</h2>
         <small className="">Let your hidden thoughts run wild!!</small>
       </div>
-      <div className="bg-[#0d0c22] w-[500px] rounded-lg p-3  shadow-black shadow-md">
+      <div className="bg-[#0d0c22] w-[100%] md:w-[500px] rounded-lg p-3  shadow-black shadow-md">
         <div className="border h-full p-2 rounded-md">
           <AnimatePresence>
             {page === "login" ? (
