@@ -4,22 +4,26 @@ import { useParams } from "react-router-dom";
 
 const SendMessage = () => {
   const [loading, setLoading] = useState(true);
+  const [valid, setValid] = useState(true);
+  const [error, setError] = useState(false);
   const [message, setMessage] = useState("");
   let { username } = useParams();
 
   useEffect(() => {
     document.title = `Send a message to ${username} | Anonymzzz`;
     function setMetaTag(property, content) {
-        const existingTag = document.querySelector(`meta[property="${property}"]`);
-        if (existingTag) {
-          existingTag.setAttribute("content", content);
-        } else {
-          const newMetaTag = document.createElement("meta");
-          newMetaTag.setAttribute("property", property);
-          newMetaTag.setAttribute("content", content);
-          document.head.appendChild(newMetaTag);
-        }
+      const existingTag = document.querySelector(
+        `meta[property="${property}"]`
+      );
+      if (existingTag) {
+        existingTag.setAttribute("content", content);
+      } else {
+        const newMetaTag = document.createElement("meta");
+        newMetaTag.setAttribute("property", property);
+        newMetaTag.setAttribute("content", content);
+        document.head.appendChild(newMetaTag);
       }
+    }
     setMetaTag("og:title", "Anonymzzz");
     setMetaTag("og:description", `Send a message to ${username}`);
     const verifyLink = () => {
@@ -37,7 +41,13 @@ const SendMessage = () => {
           setLoading(false);
         })
         .catch((e) => {
-          console.log(e.response.data.message);
+          if (e.response.status === 400) {
+            setValid(false);
+            setLoading(false);
+          } else {
+            setError(true);
+            console.log(e.response.data.message);
+          }
         });
     };
     verifyLink();
@@ -79,9 +89,15 @@ const SendMessage = () => {
           <div></div>
           <div></div>
         </div>
-      ) : (
+      ) : error ? (
         <div className="flex flex-col max-w-[100%] w-full h-[100vh] justify-center items-center">
-          <div className="bg-[#0d0c22] w-[500px] send-container rounded-lg p-3 text-white  shadow-black shadow-md">
+          <div className="bg-[#0d0c22] w-[100%] md:w-[500px] send-container rounded-lg p-3 text-white  shadow-black shadow-md">
+            <p>An error occured...</p>
+          </div>
+        </div>
+      ) : valid ? (
+        <div className="flex flex-col max-w-[100%] w-full h-[100vh] justify-center items-center">
+          <div className="bg-[#0d0c22] w-[100%] md:w-[500px] send-container rounded-lg p-3 text-white  shadow-black shadow-md">
             <div className="border h-full p-2 rounded-md">
               <h2 className="m-0 text-2xl">Anonymzzz</h2>
               <small className="-mt-10">
@@ -110,6 +126,12 @@ const SendMessage = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      ) : (
+        <div className="flex flex-col max-w-[100%] w-full h-[100vh] justify-center items-center">
+          <div className="bg-[#0d0c22] w-[100%] md:w-[500px] send-container rounded-lg p-3 text-white  shadow-black shadow-md">
+            <p>The link you provided is invalid</p>
           </div>
         </div>
       )}
