@@ -104,56 +104,60 @@ const Dashboard = () => {
         </div>
       ) : (
         <div className="flex justify-center w-full items-center">
-          <div className="flex flex-col main-container w-[40%] h-[100vh]">
-            <div className="bg-[#0d0c22] mt-5 w-[100%] rounded-lg p-3 text-white shadow-black shadow-md">
-              <div className="border  p-2 rounded-md">
-                <h2 className="text-center text-2xl">Anonymzzz</h2>
-                <p className="text-center text-[11px]">
-                  Let your hidden thughts run wild!!!
-                </p>
-                <div className="mt-5 text-sm">
-                  <p>Username: {username}</p>
-                  <em>Email: {mail}</em>
-                  <div className="mt-6">
-                    <p>Your Link:</p>
-                    <div className="relative">
-                      <textarea
-                        rows={1}
-                        value={link}
-                        className="resize-none link  w-[100%] rounded-md text-black text-center p-2"
-                        readOnly
-                      ></textarea>
-                      <IoCopyOutline
-                        onClick={() => {
-                          copyLink();
-                        }}
-                        className="absolute cursor-pointer right-4 top-2"
-                        color="black"
-                        size={25}
-                      />
+          <div className="flex flex-col items-center w-[100%] h-[100vh]">
+            <div className="h-[40%] w-[100%] md:w-[500px] md:h-[50%]">
+              <div className="bg-[#0d0c22] mt-5 rounded-lg p-3 text-white shadow-black shadow-md">
+                <div className="border  p-2 rounded-md">
+                  <h2 className="text-center text-2xl">Anonymzzz</h2>
+                  <p className="text-center text-[11px]">
+                    Let your hidden thughts run wild!!!
+                  </p>
+                  <div className="mt-5 text-sm">
+                    <p>Username: {username}</p>
+                    <em>Email: {mail}</em>
+                    <div className="mt-6">
+                      <p>Your Link:</p>
+                      <div className="relative">
+                        <textarea
+                          rows={1}
+                          value={link}
+                          className="resize-none link w-[100%] rounded-md text-black text-[14px] text-center p-2"
+                          readOnly
+                        ></textarea>
+                        <IoCopyOutline
+                          onClick={() => {
+                            copyLink();
+                          }}
+                          className="absolute cursor-pointer right-4 top-2"
+                          color="black"
+                          size={25}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="mt-5 flex flex-col text-center p-3">
-              <p className="text-left mb-2">Your messages:</p>
-              <div className="overflow-y-auto h-[65%] msg-container w-[100%]">
+
+            <div className="mt-5 flex w-[100%] md:w-[500px] h-[60%] md:h-[50%] flex-col text-center p-3">
+              <p className="mt-5 text-left mb-2">Your messages:</p>
+              <div className="msg-container w-[100%] overflow-y-scroll">
                 {messages
-                  ? messages.length !=0 
+                  ? messages.length != 0
                     ? messages.map((message, index) => (
-                      <div
-                        key={index}
-                        className="bg-white border message rounded-lg flex flex-col text-left p-3 mb-5"
-                      >
-                        <p>{message.message}</p>
-                        <div className="">
-                          <small className="block">
-                            Date sent: {message.createdAt.slice(0, 10)}
-                          </small>
+                        <div
+                          key={index}
+                          className="bg-white border message rounded-lg flex flex-col text-left p-3 mb-5"
+                        >
+                          <p>{message.message}</p>
+                          <div className="">
+                            <small className="block">
+                              Date sent: {message.createdAt.slice(0, 10)}
+                            </small>
+                          </div>
                         </div>
-                      </div>
-                    )) : "You have no messages"
+                      ))
+                    : "You have no messages"
                   : ""}
               </div>
             </div>

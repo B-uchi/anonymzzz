@@ -146,11 +146,3 @@ body {
 }
 
 
-@media (max-width:425px){
-  .main-container{
-    width: 100%;
-  }
-  .msg-container{
-    height: 70%;
-  }
-}
