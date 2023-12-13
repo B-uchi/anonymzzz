@@ -5,7 +5,7 @@ export const generateUserLink = async (req, res) => {
   try {
     const { username } = req.body;
     const user = await User.findOne({ username });
-    const url = `http://localhost:5173/${user.username}/zzz`;
+    const url = `https://anonymzzz.vercel.app/${user.username}/zzz`;
     return res.status(201).json({ url });
   } catch (error) {
     return res.status(500).json({ message: error.message });

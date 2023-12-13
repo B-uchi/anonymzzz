@@ -14,7 +14,7 @@ const Dashboard = () => {
   useEffect(() => {
     const verifyUser = () => {
       const verifyUserRequest = {
-        url: "http://localhost:5555/user/verify",
+        url: "https://anonymzzz-server.vercel.app/user/verify",
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -40,7 +40,7 @@ const Dashboard = () => {
 
     const getLink = () => {
       const getLinkRequest = {
-        url: "http://localhost:5555/user/getLink",
+        url: "https://anonymzzz-server.vercel.app/user/getLink",
         method: "POST",
         data: { username },
         headers: {
@@ -62,7 +62,7 @@ const Dashboard = () => {
 
     const getMessages = () => {
       const getMessageRequest = {
-        url: "http://localhost:5555/user/messages",
+        url: "https://anonymzzz-server.vercel.app/user/messages",
         method: "POST",
         data: { username },
         headers: {
@@ -140,7 +140,8 @@ const Dashboard = () => {
               <p className="text-left mb-2">Your messages:</p>
               <div className="overflow-y-auto h-[65%] msg-container w-[100%]">
                 {messages
-                  ? messages.map((message, index) => (
+                  ? messages.length !=0 
+                    ? messages.map((message, index) => (
                       <div
                         key={index}
                         className="bg-white border message rounded-lg flex flex-col text-left p-3 mb-5"
@@ -152,8 +153,8 @@ const Dashboard = () => {
                           </small>
                         </div>
                       </div>
-                    ))
-                  : "You have no messages"}
+                    )) : "You have no messages"
+                  : ""}
               </div>
             </div>
           </div>

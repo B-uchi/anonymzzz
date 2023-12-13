@@ -15,9 +15,10 @@ const Login = () => {
 
   const login = async (e) => {
     document.querySelector("#login").classList.add("show-loading");
+    document.querySelector("#login").classList.add("show-loading");
     e.preventDefault();
     const loginRequest = {
-      url: "http://localhost:5555/auth/login",
+      url: "https://anonymzzz-server.vercel.app/auth/login",
       method: "POST",
       data: JSON.stringify({ email, password }),
       headers: {
@@ -33,26 +34,28 @@ const Login = () => {
         sessionStorage.setItem("token", response.data.token);
         toast.success("Login successfull...");
 
+
         setTimeout(() => {
           navigate("/dashboard");
         }, 1000);
         document.querySelector("#login").classList.remove("show-loading");
+        document.querySelector("#login").classList.remove("show-loading");
       })
       .catch((e) => {
         document.querySelector("#login").classList.remove("show-loading");
-        toast.error("An error occured...");
+        e.response.data.message ? toast.error(e.response.data.message) : toast.error("An error occured...");       
         console.log(e.response.data.message);
       });
   };
 
   const register = async (e) => {
     document.querySelector("#register").classList.add("show-loading");
+    document.querySelector("#register").classList.add("show-loading");
     e.preventDefault();
     const registerRequest = {
-      url: "http://localhost:5555/auth/register",
+      url: "https://anonymzzz-server.vercel.app/auth/register",
       method: "POST",
       data: JSON.stringify({ email, password, username }),
-      withCredentials: true,
       headers: {
         "content-type": "application/json",
       },
@@ -69,7 +72,7 @@ const Login = () => {
       })
       .catch((e) => {
         document.querySelector("#register").classList.remove("show-loading");
-        toast.error("An error occured...");
+        e.response.data.message ? toast.error(e.response.data.message) : toast.error("An error occured...");
         console.log(e.response.data.message);
       });
   };

@@ -9,16 +9,22 @@ const SendMessage = () => {
 
   useEffect(() => {
     document.title = `Send a message to ${username} | Anonymzzz`;
-    const newMetaTag = document.createElement("meta");
-    newMetaTag.property = "og:title";
-    newMetaTag.content = "Anonymzzz";
-    const anotherMetaTag = document.createElement("meta");
-    anotherMetaTag.property = "og:description";
-    anotherMetaTag.content = `Send a message to ${username}`;
-    document.head.appendChild(anotherMetaTag);
+    function setMetaTag(property, content) {
+        const existingTag = document.querySelector(`meta[property="${property}"]`);
+        if (existingTag) {
+          existingTag.setAttribute("content", content);
+        } else {
+          const newMetaTag = document.createElement("meta");
+          newMetaTag.setAttribute("property", property);
+          newMetaTag.setAttribute("content", content);
+          document.head.appendChild(newMetaTag);
+        }
+      }
+    setMetaTag("og:title", "Anonymzzz");
+    setMetaTag("og:description", `Send a message to ${username}`);
     const verifyLink = () => {
       const request = {
-        url: "http://localhost:5555/user/verifyLink",
+        url: "https://anonymzzz-server.vercel.app/user/verifyLink",
         method: "POST",
         data: { username },
         headers: {
@@ -40,7 +46,7 @@ const SendMessage = () => {
   const sendMessage = () => {
     if (message != null) {
       const request = {
-        url: "http://localhost:5555/user/sendMessage",
+        url: "https://anonymzzz-server.vercel.app/user/sendMessage",
         method: "POST",
         data: { username, message },
         headers: {
