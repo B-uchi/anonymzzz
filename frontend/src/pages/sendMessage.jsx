@@ -92,7 +92,7 @@ const SendMessage = () => {
       ) : error ? (
         <div className="flex flex-col max-w-[100%] w-full h-[100vh] justify-center items-center">
           <div className="bg-[#0d0c22] w-[100%] md:w-[500px] send-container rounded-lg p-3 text-white  shadow-black shadow-md">
-            <p>An error occured...</p>
+            <p className="text-center">An error occured...</p>
           </div>
         </div>
       ) : valid ? (
@@ -131,7 +131,7 @@ const SendMessage = () => {
       ) : (
         <div className="flex flex-col max-w-[100%] w-full h-[100vh] justify-center items-center">
           <div className="bg-[#0d0c22] w-[100%] md:w-[500px] send-container rounded-lg p-3 text-white  shadow-black shadow-md">
-            <p>The link you provided is invalid</p>
+            <p className="text-center">The link you provided is invalid</p>
           </div>
         </div>
       )}
