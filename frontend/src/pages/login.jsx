@@ -3,11 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Toaster, toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useCookies } from "react-cookie";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [cookies, setCookie] = useCookies(["token"]);
   const [page, setPage] = useState("login");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -65,6 +63,9 @@ const Login = () => {
       .request(registerRequest)
       .then((response) => {
         toast.success("Account created successfully...");
+        sessionStorage.setItem("username", response.data.user.username);
+        sessionStorage.setItem("mail", response.data.user.email);
+        sessionStorage.setItem("token", response.data.token);
         setTimeout(() => {
           navigate("/dashboard");
         }, 1000);
