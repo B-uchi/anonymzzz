@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [page, setPage] = useState("login");
+  const [page, setPage] = useState("sign in");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -122,10 +122,10 @@ const Login = () => {
           <div className="w-full md:w-[500px] p-3">
             <div className="p-2">
               <h1 className="font-bold text-xl md:text-3xl text-[#091e42]">
-                Welcome, {page=='login'? 'sign in' : 'sign up'}!
+                Welcome, {page}!
               </h1>
               <AnimatePresence>
-                {page === "login" ? (
+                {page === "sign in" ? (
                   <motion.div
                     className="mt-9"
                     initial={{ translateX: -100, opacity: 0 }}
@@ -133,11 +133,6 @@ const Login = () => {
                     exit={{ display: "none", opacity: 0 }}
                     key={"login"}
                   >
-                    <div className="justify-center md:block hidden">
-                      <p className="mx-auto font-semibold">
-                        Enter details to sign in
-                      </p>
-                    </div>
                     <div className="mt-5">
                       <div>
                         <div className="">
@@ -171,7 +166,7 @@ const Login = () => {
                         </div>
                         <div className="flex justify-center">
                           <small
-                            onClick={() => setPage("register")}
+                            onClick={() => setPage("sign up")}
                             className="mx-auto underline cursor-pointer"
                           >
                             Don't have an account? Create one
@@ -188,11 +183,6 @@ const Login = () => {
                     animate={{ translateX: 0, opacity: 1 }}
                     exit={{ display: "none", opacity: 0 }}
                   >
-                    <div className="justify-center  md:block hidden">
-                      <p className="mx-auto font-bold">
-                        Enter details to sign up
-                      </p>
-                    </div>
                     <div className="mt-5">
                       <div>
                         <div className="">
@@ -235,7 +225,7 @@ const Login = () => {
                         </div>
                         <div className="flex justify-center ">
                           <small
-                            onClick={() => setPage("login")}
+                            onClick={() => setPage("sign in")}
                             className="mx-auto underline cursor-pointer"
                           >
                             Already have an account? Log In
