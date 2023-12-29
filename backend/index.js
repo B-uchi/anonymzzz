@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(
   cors({
     methods: ["GET", "POST", "PUT", "DELETE"],
-    origin: "https://anonymzzz.vercel.app",
+    origin: ["https://anonymzzz.vercel.app", "http://localhost:5173/"],
   })
 );
 
