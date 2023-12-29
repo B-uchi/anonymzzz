@@ -4,7 +4,6 @@ import { Toaster, toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import anonymous from "../assets/anonymous.png";
 import axios from "axios";
-import { set } from "mongoose";
 
 const Login = () => {
   const navigate = useNavigate();
