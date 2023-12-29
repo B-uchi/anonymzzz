@@ -82,8 +82,8 @@ const Login = () => {
 
   return (
     <div className=" max-w-[100%] w-[100%]  ">
-      <div className="flex justify-center items-center h-[100vh] relative">
-        {loading ? (
+      <div className="flex flex-col md:flex-row justify-center items-center h-[100vh] relative">
+        {/* {loading ? (
           <div className="bg-[rgba(255,255,255,0.7)] w-full h-full absolute flex justify-center items-center z-50">
             <div className="spinner">
               <div></div>
@@ -100,22 +100,30 @@ const Login = () => {
           </div>
         ) : (
           ""
-        )}
-        <div className="bg-[#b9b6e7] w-[50%] flex justify-center items-center h-full">
+        )} */}
+        <div className="md:bg-[#b9b6e7] w-[100%] md:w-[50%] flex justify-center items-center h-[30%] md:h-full">
           <div className="">
             {/* Anonymous icons created by Freepik - Flaticon */}
-            <img src={anonymous} className="w-[20em]" alt="" />
-            <div className="text-black font-bold text-center mt-3 flex flex-col space-y-0.5">
+            <img
+              src={anonymous}
+              className="w-[10em] mx-auto md:w-[20em]"
+              alt=""
+            />
+            <div className="text-[#091e42] font-bold text-center mt-3 flex flex-col space-y-0.5">
               <h2 className="m-0 text-3xl">Anonymzzz</h2>
-              <small>Let your hidden thoughts run wild!!</small>
+              <small className="text-[12px] md:text-sm  md:block hidden">
+                Let your hidden thoughts run wild!!
+              </small>
             </div>
           </div>
         </div>
-        <div className="w-[50%] flex justify-center items-center">
+        <div className="w-[100%] md:w-[50%] flex justify-center items-start md:items-center h-[70%] md:h-full">
           <Toaster position="top-center" richColors />
-
-          <div className="md:w-[500px] p-3">
+          <div className="w-full md:w-[500px] p-3">
             <div className="p-2">
+              <h1 className="font-bold text-xl md:text-3xl text-[#091e42]">
+                Welcome, {page=='login'? 'sign in' : 'sign up'}!
+              </h1>
               <AnimatePresence>
                 {page === "login" ? (
                   <motion.div
@@ -125,8 +133,10 @@ const Login = () => {
                     exit={{ display: "none", opacity: 0 }}
                     key={"login"}
                   >
-                    <div className="flex justify-center">
-                      <p className="mx-auto font-bold">Sign In</p>
+                    <div className="justify-center md:block hidden">
+                      <p className="mx-auto font-semibold">
+                        Enter details to sign in
+                      </p>
                     </div>
                     <div className="mt-5">
                       <div>
@@ -178,8 +188,10 @@ const Login = () => {
                     animate={{ translateX: 0, opacity: 1 }}
                     exit={{ display: "none", opacity: 0 }}
                   >
-                    <div className="flex justify-center">
-                      <p className="mx-auto">REGISTER</p>
+                    <div className="justify-center  md:block hidden">
+                      <p className="mx-auto font-bold">
+                        Enter details to sign up
+                      </p>
                     </div>
                     <div className="mt-5">
                       <div>
@@ -218,7 +230,7 @@ const Login = () => {
                             onClick={(e) => register(e)}
                             className="p-3 px-5 flex gap-3 items-center hover:scale-105 btn rounded-lg bg-[#e5e7eb38]"
                           >
-                            Register{" "}
+                            Sign Up{" "}
                           </button>
                         </div>
                         <div className="flex justify-center ">
