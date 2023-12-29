@@ -88,7 +88,7 @@ const Dashboard = () => {
     toast("Copied to clipboard!");
   };
   return (
-    <div className="w-[100%] bg-[#f8f7f4] flex justify-center items-center h-[100vh]">
+    <div className="w-[100%] bg-[#f8f7f4] flex justify-center relative items-center h-[100vh]">
       <Toaster richColors position="top-right" />
       {link === null ? (
         <div className="spinner">
@@ -182,6 +182,9 @@ const Dashboard = () => {
           </div>
         </motion.div>
       )}
+      <small className="bottom-0 absolute right-0 p-2">
+        Made with &#10084; by Buchi
+      </small>
     </div>
   );
 };

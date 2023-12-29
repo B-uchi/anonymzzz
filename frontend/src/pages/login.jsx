@@ -50,11 +50,12 @@ const Login = () => {
 
   const register = async (e) => {
     setLoading(true);
+    let trimmedUsername = username.trim();
     e.preventDefault();
     const registerRequest = {
       url: "https://anonymzzz-server.vercel.app/auth/register",
       method: "POST",
-      data: JSON.stringify({ email, password, username }),
+      data: JSON.stringify({ email, password, username: trimmedUsername }),
       headers: {
         "content-type": "application/json",
       },
