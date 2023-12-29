@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/login";
-import { Analytics } from '@vercel/analytics/react';
+import { inject } from "@vercel/analytics";
 import Dashboard from "./pages/dashboard";
 import SendMessage from "./pages/sendMessage";
 
 function App() {
+  inject();
   return (
     <div>
       <Router>
         <Routes>
-          <Analytics/>
           <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/:username/zzz" element={<SendMessage />} />
