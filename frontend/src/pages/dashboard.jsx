@@ -27,7 +27,6 @@ const Dashboard = () => {
         .request(verifyUserRequest)
         .then((response) => {
           if (response.status === 201) {
-            toast(`${username}, welcome back!`);
             getLink();
             getMessages();
           } else {
@@ -114,7 +113,7 @@ const Dashboard = () => {
           <div className="flex flex-col justify-center items-center">
             <div className="flex flex-col justify-center items-center">
               <h1 className="text-2xl text-center w-full p-1 font-bold mb-4">
-                Welcome back!
+                Welcome back, {username}!
               </h1>
               <p className="text-lg text-center w-full p-1">
                 Your link is{" "}
