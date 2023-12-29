@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import anonymous from "../assets/anonymous.png";
 import { Toaster, toast } from "sonner";
-import { set } from "mongoose";
 
 const SendMessage = () => {
   const [loading, setLoading] = useState(true);
