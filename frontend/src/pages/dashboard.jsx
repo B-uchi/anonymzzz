@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import { Toaster, toast } from "sonner";
 import axios from "axios";
+import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
@@ -10,6 +11,7 @@ const Dashboard = () => {
   const [messages, setMessages] = useState([]);
   const mail = sessionStorage.getItem("mail");
   const username = sessionStorage.getItem("username");
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
     const verifyUser = () => {
@@ -87,7 +89,7 @@ const Dashboard = () => {
     toast("Copied to clipboard!");
   };
   return (
-    <div className="w-[100%] bg-[#dfdede] flex justify-center items-center h-[100vh]">
+    <div className="w-[100%] bg-[#f8f7f4] flex justify-center items-center h-[100vh]">
       <Toaster richColors position="top-right" />
       {link === null ? (
         <div className="spinner">
@@ -102,66 +104,84 @@ const Dashboard = () => {
           <div></div>
           <div></div>
         </div>
-      ) : (
-        <div className="flex justify-center w-full items-center">
-          <div className="flex flex-col items-center w-[100%] h-[100vh]">
-            <div className="w-[100%] md:w-[500px] h-[30%] lg:h-[30%]">
-              <div className="bg-[#0d0c22] mt-5 rounded-lg p-3 text-white shadow-black shadow-md">
-                <div className="border  p-2 rounded-md">
-                  <h2 className="text-center text-2xl">Anonymzzz</h2>
-                  <p className="text-center text-[11px]">
-                    Let your hidden thughts run wild!!!
-                  </p>
-                  <div className="mt-5 text-sm">
-                    <p>Username: {username}</p>
-                    <em>Email: {mail}</em>
-                    <div className="mt-6">
-                      <p>Your Link:</p>
-                      <div className="relative">
-                        <textarea
-                          rows={1}
-                          value={link}
-                          className="resize-none link w-[100%] rounded-md text-black text-[14px] text-center p-2"
-                          readOnly
-                        ></textarea>
-                        <IoCopyOutline
-                          onClick={() => {
-                            copyLink();
-                          }}
-                          className="absolute cursor-pointer right-4 top-2"
-                          color="black"
-                          size={25}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      ) : page === 0 ? (
+        <motion.div
+          initial={{ translateY: -200, opacity: 0 }}
+          animate={{ translateY: 0, opacity: 1 }}
+          exit={{ display: "none", opacity: 0 }}
+          key={"dashboard"}
+        >
+          <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-center items-center">
+              <h1 className="text-2xl text-center w-full p-1 font-bold mb-4">
+                Welcome back!
+              </h1>
+              <p className="text-lg text-center w-full p-1">
+                Your link is{" "}
+                <span className="text-[#0052cf] underline">{link}</span>
+              </p>
+              <button
+                className="mt-4 text-lg bg-[#484672] text-white px-4 py-2 rounded-md"
+                onClick={copyLink}
+              >
+                <IoCopyOutline className="inline-block mr-2" />
+                Copy
+              </button>
             </div>
-            <div className="flex mt-3 w-[100%] md:w-[500px] h-[70%] lg:h-[70%] flex-col text-center p-3">
-              <p className="mt-5 text-left mb-2">Your messages:</p>
-              <div className="msg-container w-[100%] overflow-y-scroll">
-                {messages
-                  ? messages.length != 0
-                    ? messages.map((message, index) => (
-                        <div
-                          key={index}
-                          className="bg-white border message rounded-lg flex flex-col text-left p-3 mb-5"
-                        >
-                          <p>{message.message}</p>
-                          <div className="">
-                            <small className="block">
-                              Date sent: {message.createdAt.slice(0, 10)}
-                            </small>
-                          </div>
-                        </div>
-                      ))
-                    : "You have no messages"
-                  : ""}
-              </div>
+            <div className="mt-8">
+              <button
+                className="text-lg bg-[#484672] text-white px-4 py-2 rounded-md"
+                onClick={() => setPage(1)}
+              >
+                View Messages
+              </button>
+              <button
+                className="text-lg ml-5 bg-[#484672] text-white px-4 py-2 rounded-md"
+                onClick={() => {
+                  sessionStorage.clear();
+                  navigate("/");
+                }}
+              >
+                Logout
+              </button>
             </div>
           </div>
-        </div>
+        </motion.div>
+      ) : (
+        <motion.div
+          initial={{ translateY: -200, opacity: 0 }}
+          animate={{ translateY: 0, opacity: 1 }}
+          exit={{ display: "none", opacity: 0 }}
+          key={"messages"}
+        >
+          <div className="flex h-[100vh] flex-col justify-center items-center">
+            <h1 className="text-2xl font-bold mb-4">Your Messages</h1>
+            {messages.length === 0 ? (
+              <p className="text-lg">No messages yet!</p>
+            ) : (
+              <div className="p-2 h-[50%] overflow-auto overflow-y-scroll">
+                {messages.map((message) => (
+                  <div className="flex flex-col justify-center items-center">
+                    <div className="flex flex-col justify-center items-start bg-[#0052cf] w-full text-white px-4 py-2 rounded-md mt-4">
+                      <p className="text-md">Message: {message.message}</p>
+                      <small className="mt-2">
+                        Date sent: {message.createdAt.slice(0, 10)}
+                      </small>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+            <div className="mt-8">
+              <button
+                className="text-lg bg-[#484672] text-white px-4 py-2 rounded-md"
+                onClick={() => setPage(0)}
+              >
+                Go Back
+              </button>
+            </div>
+          </div>
+        </motion.div>
       )}
     </div>
   );

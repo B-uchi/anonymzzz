@@ -33,16 +33,17 @@ const Login = () => {
         sessionStorage.setItem("token", response.data.token);
         setLoading(false);
         toast.success("Login successfull...");
-
         setTimeout(() => {
           navigate("/dashboard");
         }, 1000);
       })
       .catch((e) => {
         setLoading(false);
-        e.response.data.message
-          ? toast.error(e.response.data.message)
-          : toast.error("An error occured...");
+        if (e.response.data.message !== undefined) {
+          toast.error(e.response.data.message);
+        } else {
+          toast.error("An error occured...");
+        }
         console.log(e.response.data.message);
       });
   };
@@ -81,9 +82,9 @@ const Login = () => {
   };
 
   return (
-    <div className=" max-w-[100%] w-[100%]  ">
+    <div className=" max-w-[100%] w-[100%]">
       <div className="flex flex-col md:flex-row justify-center items-center h-[100vh] relative">
-        {/* {loading ? (
+        {loading ? (
           <div className="bg-[rgba(255,255,255,0.7)] w-full h-full absolute flex justify-center items-center z-50">
             <div className="spinner">
               <div></div>
@@ -100,9 +101,9 @@ const Login = () => {
           </div>
         ) : (
           ""
-        )} */}
-        <div className="md:bg-[#b9b6e7] w-[100%] md:w-[50%] flex justify-center items-center h-[30%] md:h-full">
-          <div className="">
+        )}
+        <div className="md:bg-[#b9b6e7] w-[100%] md:w-[50%] flex justify-center items-center  md:h-full">
+          <div className="pt-5">
             {/* Anonymous icons created by Freepik - Flaticon */}
             <img
               src={anonymous}
@@ -117,7 +118,7 @@ const Login = () => {
             </div>
           </div>
         </div>
-        <div className="w-[100%] md:w-[50%] flex justify-center items-start md:items-center h-[70%] md:h-full">
+        <div className="w-[100%] md:w-[50%] flex justify-center items-start md:items-center flex-grow md:h-full relative">
           <Toaster position="top-center" richColors />
           <div className="w-full md:w-[500px] p-3">
             <div className="p-2">
@@ -236,6 +237,9 @@ const Login = () => {
                   </motion.div>
                 )}
               </AnimatePresence>
+              <small className="bottom-0 absolute right-0 p-2">
+                Made with &#10084; by Buchi
+              </small>
             </div>
           </div>
         </div>
