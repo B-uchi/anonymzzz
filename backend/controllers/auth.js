@@ -14,23 +14,19 @@ export const registerUser = async (req, res) => {
       } else {
         const salt = await bcryptjs.genSalt();
         const passwordHash = await bcryptjs.hash(password, salt);
-        try{
-          const newUser = new User({
+        const newUser = new User({
           username,
           email,
           password: passwordHash,
           });
-          const savedUser = await newUser.save();
-          const token = createSecretToken(savedUser._id);
-          res
+        const savedUser = await newUser.save();
+        const token = createSecretToken(savedUser._id);
+        res
           .status(201)
           .json({
             token,
             user: { username: savedUser.username, email: savedUser.email },
           });
-        }catch(e){
-          return res.status(400).send({ message: 'Username already exists' });
-        }
       }
     }
   } catch (error) {
