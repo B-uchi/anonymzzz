@@ -185,7 +185,7 @@ const Login = () => {
                         <div className="flex justify-center">
                           <small
                             onClick={() => setPage("sign up")}
-                            className="mx-auto underline cursor-pointer"
+                            className="mx-auto underline mb-5 cursor-pointer"
                           >
                             Don't have an account? Create one
                           </small>
@@ -244,7 +244,7 @@ const Login = () => {
                         <div className="flex justify-center ">
                           <small
                             onClick={() => setPage("sign in")}
-                            className="mx-auto underline cursor-pointer"
+                            className="mx-auto underline mb-2 cursor-pointer"
                           >
                             Already have an account? Log In
                           </small>
