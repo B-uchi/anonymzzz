@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IoCopyOutline } from "react-icons/io5";
+import { IoCopyOutline, IoShareOutline } from "react-icons/io5";
 import { Toaster, toast } from "sonner";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
@@ -119,13 +119,26 @@ const Dashboard = () => {
                 Your link is{" "}
                 <span className="text-[#0052cf] underline">{link}</span>
               </p>
-              <button
-                className="mt-4 text-lg bg-[#484672] text-white px-4 py-2 rounded-md"
-                onClick={copyLink}
-              >
-                <IoCopyOutline className="inline-block mr-2" />
-                Copy
-              </button>
+              <div className="flex gap-2">
+                <button
+                  className="mt-4 text-lg bg-[#484672] text-white px-4 py-2 rounded-md items-center flex gap-1"
+                  onClick={copyLink}
+                >
+                  <IoCopyOutline />
+                  Copy
+                </button>
+                <a
+                  href={`https://api.whatsapp.com/send?text=Hey there!${encodeURI(
+                    "🌚"
+                  )}, got something you wanna say? Send me an anonymous message on Anonymzzz👌. ${link}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-4 text-lg bg-[#484672] text-white px-4 py-2.5 rounded-md justify-center flex gap-1"
+                >
+                  Share{" "}
+                  <IoShareOutline size={25} />
+                </a>
+              </div>
             </div>
             <div className="mt-8">
               <button
@@ -161,11 +174,14 @@ const Dashboard = () => {
               <div className="p-2 h-[50%] overflow-auto overflow-y-scroll">
                 {messages.map((message) => (
                   <div className="flex flex-col justify-center items-center">
-                    <div className="flex flex-col justify-center items-start bg-[#0052cf] w-full text-white px-4 py-2 rounded-md mt-4">
+                    <div className="flex flex-col justify-center items-start bg-[#484672] w-full text-white px-4 py-2 rounded-md mt-4">
                       <p className="text-md">Message: {message.message}</p>
-                      <small className="mt-2">
-                        Date sent: {message.createdAt.slice(0, 10)}
-                      </small>
+                      <div className="">
+                        <p className="text-sm">
+                          Received on:{" "}
+                          {new Date(message.createdAt).toLocaleString()}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -173,7 +189,7 @@ const Dashboard = () => {
             )}
             <div className="mt-8">
               <button
-                className="text-lg bg-[#484672] text-white px-4 py-2 rounded-md"
+                className="text-lg bg-[#0052cf] text-white px-4 py-2 rounded-md"
                 onClick={() => setPage(0)}
               >
                 Go Back

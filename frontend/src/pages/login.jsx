@@ -4,6 +4,7 @@ import { Toaster, toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import anonymous from "../assets/anonymous.png";
 import axios from "axios";
+import emailValidator from "email-validator";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -51,35 +52,50 @@ const Login = () => {
   const register = async (e) => {
     setLoading(true);
     let trimmedUsername = username.trim();
-    e.preventDefault();
-    const registerRequest = {
-      url: "https://anonymzzz-server.vercel.app/auth/register",
-      method: "POST",
-      data: JSON.stringify({ email, password, username: trimmedUsername }),
-      headers: {
-        "content-type": "application/json",
-      },
-    };
+    const isValidEmail = emailValidator.validate(email);
 
-    await axios
-      .request(registerRequest)
-      .then((response) => {
-        sessionStorage.setItem("username", response.data.user.username);
-        sessionStorage.setItem("mail", response.data.user.email);
-        sessionStorage.setItem("token", response.data.token);
+    e.preventDefault();
+    if (trimmedUsername.length < 3) {
+      setLoading(false);
+      return toast.error("Username must be at least 3 characters long");
+    } else {
+      if (!isValidEmail) {
+        const registerRequest = {
+          url: "https://anonymzzz-server.vercel.app/auth/register",
+          method: "POST",
+          data: JSON.stringify({
+            email,
+            password,
+            username: trimmedUsername,
+          }),
+          headers: {
+            "content-type": "application/json",
+          },
+        };
+        await axios
+          .request(registerRequest)
+          .then((response) => {
+            sessionStorage.setItem("username", response.data.user.username);
+            sessionStorage.setItem("mail", response.data.user.email);
+            sessionStorage.setItem("token", response.data.token);
+            setLoading(false);
+            toast.success("Account created successfully...");
+            setTimeout(() => {
+              navigate("/dashboard");
+            }, 1000);
+          })
+          .catch((e) => {
+            setLoading(false);
+            e.response.data.message
+              ? toast.error(e.response.data.message)
+              : toast.error("An error occured...");
+            console.log(e.response.data.message);
+          });
+      } else {
         setLoading(false);
-        toast.success("Account created successfully...");
-        setTimeout(() => {
-          navigate("/dashboard");
-        }, 1000);
-      })
-      .catch((e) => {
-        setLoading(false);
-        e.response.data.message
-          ? toast.error(e.response.data.message)
-          : toast.error("An error occured...");
-        console.log(e.response.data.message);
-      });
+        return toast.error("Invalid email address");
+      }
+    }
   };
 
   return (
