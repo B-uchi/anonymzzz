@@ -173,7 +173,7 @@ const Dashboard = () => {
             ) : (
               <div className="p-2 h-[50%] overflow-auto overflow-y-scroll">
                 {messages.map((message) => (
-                  <div className="flex flex-col justify-center items-center">
+                  <div className="flex flex-col justify-center items-center" key={message._id}>
                     <div className="flex flex-col justify-center items-start bg-[#484672] w-full text-white px-4 py-2 rounded-md mt-4">
                       <p className="text-md">Message: {message.message}</p>
                       <div className="">
