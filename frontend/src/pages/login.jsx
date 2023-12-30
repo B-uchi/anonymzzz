@@ -99,7 +99,7 @@ const Login = () => {
   };
 
   return (
-    <div className=" max-w-[100%] w-[100%]">
+    <div className=" max-w-[100%] w-[100%] h-[100vh] max-h-screen overflow-y-scroll">
       <div className="flex flex-col md:flex-row justify-center items-center h-[100vh] relative">
         {loading ? (
           <div className="bg-[rgba(255,255,255,0.7)] w-full h-full absolute flex justify-center items-center z-50">
