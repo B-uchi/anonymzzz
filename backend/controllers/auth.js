@@ -14,11 +14,15 @@ export const registerUser = async (req, res) => {
       } else {
         const salt = await bcryptjs.genSalt();
         const passwordHash = await bcryptjs.hash(password, salt);
-        const newUser = new User({
+        try{
+          const newUser = new User({
           username,
           email,
           password: passwordHash,
-        });
+          });
+        }catch(e){
+          return res.status(400).send({ message: 'Username already exists' });
+        }
         const savedUser = await newUser.save();
         const token = createSecretToken(savedUser._id);
         res
