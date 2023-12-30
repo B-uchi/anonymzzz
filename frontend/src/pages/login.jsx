@@ -59,7 +59,7 @@ const Login = () => {
       setLoading(false);
       return toast.error("Username must be at least 3 characters long");
     } else {
-      if (!isValidEmail) {
+      if (isValidEmail) {
         const registerRequest = {
           url: "https://anonymzzz-server.vercel.app/auth/register",
           method: "POST",
