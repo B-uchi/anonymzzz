@@ -20,17 +20,17 @@ export const registerUser = async (req, res) => {
           email,
           password: passwordHash,
           });
-        }catch(e){
-          return res.status(400).send({ message: 'Username already exists' });
-        }
-        const savedUser = await newUser.save();
-        const token = createSecretToken(savedUser._id);
-        res
+          const savedUser = await newUser.save();
+          const token = createSecretToken(savedUser._id);
+          res
           .status(201)
           .json({
             token,
             user: { username: savedUser.username, email: savedUser.email },
           });
+        }catch(e){
+          return res.status(400).send({ message: 'Username already exists' });
+        }
       }
     }
   } catch (error) {
