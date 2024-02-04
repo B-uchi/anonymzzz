@@ -14,21 +14,6 @@ const SendMessage = () => {
 
   useEffect(() => {
     document.title = `Send a message to ${username} | Anonymzzz`;
-    function setMetaTag(property, content) {
-      const existingTag = document.querySelector(
-        `meta[property="${property}"]`
-      );
-      if (existingTag) {
-        existingTag.setAttribute("content", content);
-      } else {
-        const newMetaTag = document.createElement("meta");
-        newMetaTag.setAttribute("property", property);
-        newMetaTag.setAttribute("content", content);
-        document.head.appendChild(newMetaTag);
-      }
-    }
-    setMetaTag("og:title", "Anonymzzz");
-    setMetaTag("og:description", `Send a message to ${username}`);
     const verifyLink = () => {
       const request = {
         url: "https://anonymzzz-server.vercel.app/user/verifyLink",

@@ -18,7 +18,7 @@ export const registerUser = async (req, res) => {
           username,
           email,
           password: passwordHash,
-        });
+          });
         const savedUser = await newUser.save();
         const token = createSecretToken(savedUser._id);
         res
