@@ -74,7 +74,7 @@ const Dashboard = () => {
       axios
         .request(getMessageRequest)
         .then((response) => {
-          setMessages(response.data.messages.reverse);
+          setMessages(response.data.messages?.reverse);
         })
         .catch((e) => {
           console.log("An error occured", e.response);
