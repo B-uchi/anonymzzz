@@ -171,7 +171,7 @@ const Dashboard = () => {
             {messages.length === 0 ? (
               <p className="text-lg">No messages yet!</p>
             ) : (
-              <div className="p-2 h-[50%] overflow-auto overflow-y-scroll">
+              <div className="p-2 h-[50%] w-full md:w-[50%] overflow-auto overflow-y-scroll">
                 {messages.map((message) => (
                   <div className="flex flex-col justify-center items-center" key={message._id}>
                     <div className="flex flex-col justify-center items-start bg-[#484672] w-full text-white px-4 py-2 rounded-md mt-4">
