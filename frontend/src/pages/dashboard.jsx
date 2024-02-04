@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const Dashboard = () => {
   const navigate = useNavigate();
   const [link, setLink] = useState(null);
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState(null);
   const mail = sessionStorage.getItem("mail");
   const username = sessionStorage.getItem("username");
   const [page, setPage] = useState(0);
@@ -74,7 +74,7 @@ const Dashboard = () => {
       axios
         .request(getMessageRequest)
         .then((response) => {
-          setMessages(response.data.messages?.reverse);
+          setMessages(response.data.messages ? response.data.messages?.reverse() : []);
         })
         .catch((e) => {
           console.log("An error occured", e.response);
