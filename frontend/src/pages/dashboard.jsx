@@ -13,8 +13,6 @@ const Dashboard = () => {
   const username = sessionStorage.getItem("username");
   const [page, setPage] = useState(0);
 
-  console.log(link)
-
   useEffect(() => {
     const verifyUser = () => {
       const verifyUserRequest = {
