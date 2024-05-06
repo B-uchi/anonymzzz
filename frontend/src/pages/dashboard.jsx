@@ -78,7 +78,7 @@ const Dashboard = () => {
         .request(getMessageRequest)
         .then((response) => {
           setMessages(
-            response.data ? response.data.messages?.reverse() : []
+            response.data.messages ? response.data.messages?.reverse() : []
           );
           setLoading(false);
         })

@@ -29,6 +29,7 @@ const Login = () => {
     await axios
       .request(loginRequest)
       .then((response) => {
+        console.log(response)
         sessionStorage.setItem("username", response.data.user.username);
         sessionStorage.setItem("mail", response.data.user.email);
         sessionStorage.setItem("token", response.data.token);
