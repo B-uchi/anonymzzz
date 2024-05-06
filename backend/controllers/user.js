@@ -1,8 +1,11 @@
 import { Message } from "../models/message.js";
 import { User } from "../models/user.js";
 import Cryptr from "cryptr";
+import dotenv from "dotenv";
 
+dotenv.config()
 const cryptr = new Cryptr(process.env.ENCRYPTION_KEY);
+
 export const generateUserLink = async (req, res) => {
   try {
     const { username } = req.body;

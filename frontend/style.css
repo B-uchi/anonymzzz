@@ -134,3 +134,34 @@ input:-webkit-autofill {
 .show-loading {
   display: block;
 }
+
+.loader {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: transparent;
+  border-radius: 50%;
+}
+
+.loader {
+  border: 4px solid rgba(0, 0, 0, 0.9);
+  border-left-color: transparent;
+  width: 15px;
+  height: 15px;
+}
+
+.loader {
+  border: 4px solid rgba(0, 0, 0, 0.9);
+  border-left-color: transparent;
+  width: 20px;
+  height: 20px;
+  animation: spin89345 1s linear infinite;
+}
+
+@keyframes spin89345 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
