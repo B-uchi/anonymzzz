@@ -18,7 +18,7 @@ const Login = () => {
     setLoading(true);
     e.preventDefault();
     const loginRequest = {
-      url: "http://localhost:5555/auth/login",
+      url: "https://anonymzzz-server.vercel.app/auth/login",
       method: "POST",
       data: JSON.stringify({ email, password }),
       headers: {
