@@ -18,7 +18,7 @@ app.use(
 const PORT = process.env.PORT || 5555;
 
 app.get("/", (req, res) => {
-  res.status(200).send(<p>Successful</p>);
+  res.status(200).send("Successful");
 });
 app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
