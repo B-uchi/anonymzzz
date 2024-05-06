@@ -19,7 +19,7 @@ const Dashboard = () => {
   useEffect(() => {
     const verifyUser = () => {
       const verifyUserRequest = {
-        url: "https://anonymzzz-server.vercel.app/user/verify",
+        url: "https://anonymzzz-server.onrender.com/user/verify",
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -44,7 +44,7 @@ const Dashboard = () => {
 
     const getLink = () => {
       const getLinkRequest = {
-        url: "https://anonymzzz-server.vercel.app/user/getLink",
+        url: "https://anonymzzz-server.onrender.com/user/getLink",
         method: "POST",
         data: { username },
         headers: {
@@ -66,7 +66,7 @@ const Dashboard = () => {
 
     const getMessages = () => {
       const getMessageRequest = {
-        url: "https://anonymzzz-server.vercel.app/user/messages",
+        url: "https://anonymzzz-server.onrender.com/user/messages",
         method: "POST",
         data: { username },
         headers: {
@@ -157,7 +157,7 @@ const Dashboard = () => {
               <h1 className="text-2xl text-center w-full p-1 font-bold mb-4">
                 Welcome back, {username}!
               </h1>
-              <p className="text-lg text-center w-full p-1 flex items-center justify-center gap-2">
+              <p className="text-lg text-center w-full p-1 flex md:flex-row flex-col items-center justify-center gap-2">
                 Your link is{" "}
                 {loading == true ? (
                   <span className="loader"></span>

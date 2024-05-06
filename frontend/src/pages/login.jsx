@@ -18,7 +18,7 @@ const Login = () => {
     setLoading(true);
     e.preventDefault();
     const loginRequest = {
-      url: "https://anonymzzz-server.vercel.app/auth/login",
+      url: "https://anonymzzz-server.onrender.com/auth/login",
       method: "POST",
       data: JSON.stringify({ email, password }),
       headers: {
@@ -62,7 +62,7 @@ const Login = () => {
     } else {
       if (isValidEmail) {
         const registerRequest = {
-          url: "https://anonymzzz-server.vercel.app/auth/register",
+          url: "https://anonymzzz-server.onrender.com/auth/register",
           method: "POST",
           data: JSON.stringify({
             email,
