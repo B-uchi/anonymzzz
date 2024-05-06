@@ -160,7 +160,7 @@ const Dashboard = () => {
               <p className="text-lg text-center w-full p-1 flex items-center justify-center gap-2">
                 Your link is{" "}
                 {loading == true ? (
-                  <div className="loader"></div>
+                  <span className="loader"></span>
                 ) : (
                   <span className="text-[#0052cf] underline">{link}</span>
                 )}
