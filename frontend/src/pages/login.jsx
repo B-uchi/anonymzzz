@@ -179,7 +179,8 @@ const Login = () => {
                         <div className="mt-5 flex justify-center">
                           <button
                             onClick={(e) => login(e)}
-                            className="p-3 px-5 hover:scale-105 btn rounded-lg"
+                            type="submit"
+                            className="p-3 px-5 hover:scale-105 btn rounded-lg text-white"
                           >
                             Sign In{" "}
                             <div id="login" className="traffic-loader"></div>
@@ -239,7 +240,8 @@ const Login = () => {
                         <div className="mt-5 flex justify-center">
                           <button
                             onClick={(e) => register(e)}
-                            className="p-3 px-5 flex gap-3 items-center hover:scale-105 btn rounded-lg bg-[#e5e7eb38]"
+                            type="submit"
+                            className="p-3 px-5 flex gap-3 items-center hover:scale-105 btn text-white rounded-lg bg-[#e5e7eb38]"
                           >
                             Sign Up{" "}
                           </button>
