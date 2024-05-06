@@ -15,3 +15,8 @@ Technogies used
 
 Learn't a couple of things along the way....
 Check it out [here](https://anonymzzz.vercel.app)
+
+### Features
+ - E2E Message Encryption
+ - Authentication
+ - Message Share
