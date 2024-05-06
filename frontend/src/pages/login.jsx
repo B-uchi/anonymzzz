@@ -18,7 +18,7 @@ const Login = () => {
     setLoading(true);
     e.preventDefault();
     const loginRequest = {
-      url: "https://anonymzzz-server.vercel.app/auth/login",
+      url: "http://localhost:5555/auth/login",
       method: "POST",
       data: JSON.stringify({ email, password }),
       headers: {
@@ -100,7 +100,7 @@ const Login = () => {
 
   return (
     <div className=" max-w-[100%] w-[100%] h-[100vh] max-h-screen overflow-y-scroll">
-      <div className="flex flex-col md:flex-row justify-center items-center h-[100vh] relative">
+      <div className="flex flex-col md:flex-row justify-end items-center h-[100vh] relative">
         {loading ? (
           <div className="bg-[rgba(255,255,255,0.7)] w-full h-full absolute flex justify-center items-center z-50">
             <div className="spinner">
@@ -122,13 +122,16 @@ const Login = () => {
         <div className="md:bg-[#b9b6e7] w-[100%] md:w-[50%] flex justify-center items-center  md:h-full">
           <div className="pt-5">
             {/* Anonymous icons created by Freepik - Flaticon */}
-            <img
-              src={anonymous}
-              className="w-[10em] mx-auto md:w-[20em]"
-              alt=""
-            />
+            <div className="flex md:mt-0 mt-10 justify-center items-center gap-5">
+              <img
+                src={anonymous}
+                className="w-[3em] mx-auto md:w-[20em]"
+                alt=""
+              />
+              <h2 className="m-0 block text-[#091e42] md:hidden text-3xl">Anonymzzz</h2>
+            </div>
             <div className="text-[#091e42] font-bold text-center mt-3 flex flex-col space-y-0.5">
-              <h2 className="m-0 text-3xl">Anonymzzz</h2>
+              <h2 className="m-0 md:block hidden text-3xl">Anonymzzz</h2>
               <small className="text-[12px] md:text-sm  md:block hidden">
                 Let your hidden thoughts run wild!!
               </small>
@@ -139,7 +142,7 @@ const Login = () => {
           <Toaster position="top-center" richColors />
           <div className="w-full md:w-[500px] p-3">
             <div className="p-2">
-              <h1 className="font-bold text-xl md:text-3xl text-[#091e42]">
+              <h1 className="md:font-bold text-xl md:text-3xl text-[#091e42]">
                 Welcome, {page}!
               </h1>
               <AnimatePresence>
