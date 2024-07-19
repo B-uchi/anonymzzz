@@ -19,7 +19,6 @@ body {
   padding: 8px;
   margin-top: 4px;
 }
-.input:webkit-autofill,
 input:-webkit-autofill {
   background-color: transparent;
   border: 3px red solid;
